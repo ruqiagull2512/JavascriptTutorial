@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML events</title>
+    <style>
+        img{
+            height: 250px;
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body style="color: aliceblue; background-color: black;">
+    <h2>Amazing images</h2>
+    <div>
+        <ul id="images">
+            <li><img src="/11_events/0fb0766ca3fc1270ea7e42fc9c93d4ce.jpg" alt="" id="photoshop"></li>
+            <li><img src="/11_events/214a4350fe0b31f1d4a35a4bc9d399aa.jpg" alt="" id="japan"></li>
+            <li><img src="/11_events/5abb3614b071497b2dae5a9dac7e6e18.jpg" alt="" id="river"></li>
+            <li><img src="/11_events/691babdd3c359b098413c1edd7996d89.jpg" alt="" id="owl"></li>
+            <li> <img src="/11_events/d31490a544a911323873e52f5da47c8b.jpg" alt="" id="prayer"></li>
+            <li> <a style="color: aliceblue;" href="https;//google.com" id="google">Google</a></li>
+
+        </ul>
+    </div>
+    
+</body>
+<script>
+    document.getElementById('images').addEventListener('click', function (e) {
+        console.log("Click inside the ul.");
+        
+    }, false)
+    document.getElementById('owl').addEventListener('click', function (e) {
+        console.log("owl clicked.");
+        e.stopPropagation(); // stop the event for bubbling and not goes in above event
+        
+    }, false)
+
+
+    //not google link open in google
+    document.getElementById('google').addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+
+        console.log("Google Click");
+     },false)
+
+    //read about
+    //timestamp, events type,defaultpreventd, 
+    //target, toelement, srcElement, currentTarget
+
+    // interview perspective
+    //clientX, clientY,screenX, screenY,
+    //altkey, cntrkey,shiftkey, keyCode
+
+
+    //after my click imae will disappear
+    document.querySelector('#images').addEventListener('click', function (e ) {
+        console.log(e.target.tagName);
+        if (e.target.tagName==='IMG') {
+            console.log(e.target.id);
+            
+            let removeIt = e.target.parentNode;
+        removeIt.remove();
+
+            
+        }
+     
+        
+        
+    }, false)
+
+</script>
+</html>

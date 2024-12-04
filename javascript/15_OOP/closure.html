@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure Scope</title>
+</head>
+<body>
+    <button id="green">Green</button>
+    <button id="orange">Orange</button>
+</body>
+<script>
+    // function init(){
+    //     let name ="Ruqia"
+    //     function displayName(){
+    //         console.log(name);
+            
+    //     }
+    //     displayName();
+    // }
+    // init();
+
+    function outer(){// example like parent can give all children but sibling cannot share with each other and not with parent
+        let name="Ruqia"
+        function inner(){  //inner function has access to outer function variable , is that lexical scope
+            console.log("inner",name);
+            
+        }
+        function innerTwo(){
+            console.log("innertwo",name);
+
+
+        }
+        inner()
+        innerTwo()
+    }
+    outer()
+    // closure scope
+
+    function outer2(){
+        const name="GUL";
+        function displayName(){
+            console.log(name);
+            
+        }
+        return displayName;
+    }
+   const myFunc = outer2();
+   myFunc();
+
+
+</script>
+
+<script>
+    // document.getElementById("green").onclick=function(){
+    //     document.body.style.backgroundColor="green"
+    // }
+    // document.getElementById("orange").onclick=function(){
+    //     document.body.style.backgroundColor="orange"
+    // }
+  function clickHandler(color){
+      
+    return function(){
+    document.body.style.backgroundColor=`${color}`
+
+        
+
+    }
+
+
+    
+  }
+ document.getElementById('orange').onclick= clickHandler("orange")
+ document.getElementById('green').onclick= clickHandler("green")
+
+
+
+</script>
+</html>

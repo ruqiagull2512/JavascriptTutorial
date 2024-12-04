@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Projects</title>
+</head>
+<body>
+    <h1>Two Projects</h1>
+    <button id="stop">Stop</button>
+    
+</body>
+<script>
+  //change I change h1 heading 
+//   document.querySelector('h1').innerHTML="This setTime Function"
+
+
+
+
+
+    
+    // setTimeout(function() {  //this function will show name after two minute but only one time
+    //     console.log("Ruiqa");
+        
+        
+    // }, 2000)
+
+
+
+
+
+
+
+    //Another way to write above code 
+
+    const sayRuqia= function () {
+        console.log("Ruqia");
+        
+        
+    }
+    setTimeout(sayRuqia, 2000)
+
+
+
+    const changeText =function(){
+ document.querySelector('h1').innerHTML="This setTime Function"
+
+
+    }
+   const changeMe= setTimeout(changeText, 2000)  // I store it in variable to stop settimeout text to change stop by stop button
+   document.querySelector('#stop').addEventListener('click', function(){
+    clearTimeout(changeMe);
+    console.log("Stopped");
+    
+   })
+
+</script>
+</html>
